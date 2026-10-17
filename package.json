@@ -1,0 +1,12 @@
+{
+  "name": "gather-content-discovery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A personalized content discovery mini project with optional Gemini AI.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

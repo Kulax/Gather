@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f5f1" />
+    <meta name="description" content="A calmer, more personal way to discover stories worth your time." />
+    <title>Gather — stories worth your time</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#" aria-label="Gather home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
+          <span>gather<span class="brand-period">.</span></span>
+        </a>
+
+        <div class="sidebar-section">
+          <p class="section-label">YOUR SPACE</p>
+          <nav class="main-nav" aria-label="Main navigation">
+            <button class="nav-link active" data-view="discover"><span class="nav-icon">⌂</span>Discover</button>
+            <button class="nav-link" data-view="saved"><span class="nav-icon">♡</span>Saved <span class="saved-count" id="saved-count">0</span></button>
+          </nav>
+        </div>
+
+        <div class="sidebar-section interests-section">
+          <div class="section-heading">
+            <p class="section-label">YOUR INTERESTS</p>
+            <button class="tiny-button" id="edit-interests" aria-label="Edit interests">＋</button>
+          </div>
+          <div class="interest-list" id="interest-list"></div>
+        </div>
+
+        <div class="sidebar-note">
+          <div class="note-sparkle">✳</div>
+          <p class="note-title">A little less scroll.<br />A lot more <em>curiosity.</em></p>
+          <p class="note-copy">Your feed, shaped around what you love.</p>
+        </div>
+
+        <div class="profile">
+          <div class="avatar">A</div>
+          <div class="profile-copy"><strong>Alex Morgan</strong><span>Your reading space</span></div>
+          <button class="tiny-button" id="open-preferences" aria-label="Edit preferences">···</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumb"><span>YOUR SPACE</span><span class="crumb-slash">/</span><strong id="breadcrumb-page">Discover</strong></div>
+          <div class="topbar-actions">
+            <label class="search-box">
+              <span aria-hidden="true">⌕</span>
+              <input type="search" id="search-input" placeholder="Find something inspiring..." aria-label="Search stories" />
+              <kbd>⌘ K</kbd>
+            </label>
+            <button class="avatar top-avatar" aria-label="Alex Morgan">A</button>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow"><span class="live-dot"></span> YOUR PERSONALIZED EDITION <span class="edition-date" id="edition-date"></span></p>
+              <h1 id="welcome-title">Good morning, Alex<span class="heading-period">.</span></h1>
+              <p class="welcome-subtitle" id="welcome-subtitle">A few thoughtful finds, picked just for you.</p>
+            </div>
+            <button class="digest-button" id="digest-button"><span>✳</span> Your daily digest <span class="button-arrow">↗</span></button>
+          </section>
+
+          <section class="feature-card" id="feature-card" aria-label="Featured story">
+            <div class="feature-image">
+              <div class="feature-image-overlay"></div>
+              <span class="feature-image-label"><span>✳</span> EDITOR'S PICK</span>
+              <span class="image-credit">FIELD NOTES · 08:42</span>
+            </div>
+            <div class="feature-copy">
+              <div class="story-meta"><span class="source-dot"></span> THE CREATIVE INDEPENDENT <span class="meta-separator">·</span> 8 MIN READ</div>
+              <h2>The underrated art of<br class="desktop-break" /> paying attention</h2>
+              <p>A gentle case for noticing more: how the smallest observations can change the way we make, think, and move through the world.</p>
+              <div class="feature-footer">
+                <button class="text-button" id="feature-read">Explore the story <span>→</span></button>
+                <button class="bookmark-button" data-save="feature" aria-label="Save featured story">♡</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="story-section">
+            <div class="section-title-row">
+              <div>
+                <div class="title-with-spark"><h2 id="feed-heading">Made for your mind</h2><span>✳</span></div>
+                <p class="section-subtitle" id="feed-subtitle">A fresh mix based on what you're into.</p>
+              </div>
+              <button class="view-all" id="clear-filter">For you <span>⌄</span></button>
+            </div>
+
+            <div class="filter-row" id="filter-row" aria-label="Filter stories by format"></div>
+            <div class="story-grid" id="story-grid"></div>
+            <div class="empty-state hidden" id="empty-state">
+              <span>◌</span><h3>No stories found just yet</h3><p>Try another search or explore a different topic.</p>
+              <button class="text-button" id="reset-view">Back to your feed →</button>
+            </div>
+          </section>
+
+          <footer class="page-footer"><span>Made for the beautifully curious.</span><span>Take what sparks. Leave the rest.</span></footer>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-backdrop hidden" id="modal-backdrop">
+      <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <button class="dialog-close" id="dialog-close" aria-label="Close dialog">×</button>
+        <div id="dialog-content"></div>
+      </section>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
